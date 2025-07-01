@@ -14,9 +14,14 @@ export interface Tool {
 	dateAdded: string; // ISO format
 
 	howTo?: string[]; // Array of step-by-step instructions
-	syntaxExamples?: {
+	syntax?: {
 		title: string;
 		code: string;
-		explanation: string;
+		explanation?: string;
 	}[];
+	details?: {
+		intro: string;
+		features?: string[];
+		tips?: string[];
+	};
 }

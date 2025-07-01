@@ -19,12 +19,41 @@ export const tools: Tool[] = [
 		name: 'Heroicons',
 		description:
 			'Beautiful hand-crafted SVG icons, by the makers of Tailwind CSS.',
-		url: 'https://heroicons.com',
+		url: 'https://heroicons.com/',
 		category: 'Icons',
-		tags: ['icons', 'svg', 'tailwind'],
-		image: 'https://picsum.photos/400',
-		isOfflineFriendly: true,
-		dateAdded: new Date().toISOString(),
+		tags: ['svg', 'icons', 'tailwind'],
+		image: '/images/tools/heroicons.png',
+		dateAdded: '2025-06-28',
+		howTo: [
+			'Go to https://heroicons.com',
+			'Pick an icon you like',
+			'Copy the SVG code or install via npm for React',
+		],
+		syntax: [
+			{
+				title: 'Usage in React',
+				code: `import { HomeIcon } from '@heroicons/react/24/outline';
+
+<HomeIcon className="h-6 w-6 text-blue-500" />`,
+			},
+			{
+				title: 'CDN Example',
+				code: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" ...></svg>`,
+			},
+		],
+		details: {
+			intro:
+				'Heroicons provides free MIT-licensed high-quality SVG icons for UI development.',
+			features: [
+				'Optimized for Tailwind CSS',
+				'Available in solid and outline styles',
+				'React support',
+			],
+			tips: [
+				'Try combining with Tailwind utility classes',
+				'Can be used directly in HTML or JSX',
+			],
+		},
 	},
 	{
 		id: 'typescale',
@@ -65,7 +94,7 @@ export const tools: Tool[] = [
 			'Choose TypeScript if needed',
 			'Run `npm run dev` to start the server',
 		],
-		syntaxExamples: [
+		syntax: [
 			{
 				title: '<Image> component',
 				code: `<Image src="/logo.png" width={100} height={100} alt="Logo" />`,

@@ -15,7 +15,13 @@ import {
 	ChevronRight,
 } from 'lucide-react';
 
-const categoryIcons: Record<string, React.JSX.Element> = {
+const categories = {
+	Color: ['Coolors', 'ColorHunt', 'TailwindShades'],
+	Icons: ['Heroicons', 'FontAwesome', 'Lucide'],
+	UI: ['TailwindUI', 'ShadCN', 'Flowbite', 'nextjs'],
+};
+
+export const categoryIcons: Record<string, React.JSX.Element> = {
 	Color: <Palette size={20} />,
 	Icons: <Image size={20} />,
 	UI: <LayoutTemplate size={20} />,
@@ -25,12 +31,6 @@ const categoryIcons: Record<string, React.JSX.Element> = {
 	Documentation: <FileText size={20} />,
 	Security: <ShieldCheck size={20} />,
 	Performance: <GaugeCircle size={20} />,
-};
-
-const categories = {
-	Color: ['Coolors', 'ColorHunt', 'TailwindShades'],
-	Icons: ['Heroicons', 'FontAwesome', 'Lucide'],
-	UI: ['TailwindUI', 'ShadCN', 'Flowbite'],
 };
 
 export default function Sidebar() {
@@ -50,14 +50,14 @@ export default function Sidebar() {
 				{Object.entries(categories).map(([category, tools]) => (
 					<div
 						key={category}
-						className="mb-2 group">
+						className="mb-2 text-2xl group">
 						<button
 							onClick={() =>
 								setExpandedCategory((prev) =>
 									prev === category ? null : category
 								)
 							}
-							className="w-full flex items-center space-x-2 hover:text-purple-400">
+							className="w-full flex items-center space-x-2 size-10 hover:text-purple-400">
 							{/* Show icon always */}
 							{categoryIcons[category]}
 
@@ -80,7 +80,7 @@ export default function Sidebar() {
 									<li key={tool}>
 										<Link
 											href={`/${category.toLowerCase()}/${tool.toLowerCase()}`}
-											className="block py-1 text-sm hover:text-purple-300">
+											className="block py-1 text-lg hover:text-purple-300">
 											{tool}
 										</Link>
 									</li>
