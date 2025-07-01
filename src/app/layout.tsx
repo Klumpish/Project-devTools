@@ -23,14 +23,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
-		<html lang="en">
-			<body className="flex flex-col min-h-screen ">
+		<html
+			lang="en"
+			className="dark">
+			<body className="flex flex-col min-h-screen  ">
 				<Sidebar />
-				<div className="flex-1 flex flex-col ml-16">
+				<div className="flex-1 flex flex-col ml-16 bg-gradient-to-b from-gray-900 to-black-100">
 					<Header />
-					<main className="flex-1 container mx-auto px-4 py-6 bg-gradient-to-b from-gray-900 to-black-100">
-						{children}
-					</main>
+					<main className="flex-1 container mx-auto px-4 py-6">{children}</main>
 					<Footer />
 				</div>
 			</body>
