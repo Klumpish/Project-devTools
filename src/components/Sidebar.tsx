@@ -2,7 +2,30 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { ChevronRight } from 'lucide-react'; // You can install lucide-react if not yet
+import {
+	Palette,
+	Image,
+	LayoutTemplate,
+	TextCursorInput,
+	TestTube,
+	ServerCog,
+	FileText,
+	ShieldCheck,
+	GaugeCircle,
+	ChevronRight,
+} from 'lucide-react';
+
+const categoryIcons: Record<string, React.JSX.Element> = {
+	Color: <Palette size={20} />,
+	Icons: <Image size={20} />,
+	UI: <LayoutTemplate size={20} />,
+	Fonts: <TextCursorInput size={20} />,
+	Testing: <TestTube size={20} />,
+	'API Tools': <ServerCog size={20} />,
+	Documentation: <FileText size={20} />,
+	Security: <ShieldCheck size={20} />,
+	Performance: <GaugeCircle size={20} />,
+};
 
 const categories = {
 	Color: ['Coolors', 'ColorHunt', 'TailwindShades'],
@@ -35,9 +58,12 @@ export default function Sidebar() {
 								)
 							}
 							className="w-full flex items-center space-x-2 hover:text-purple-400">
-							<span className="font-bold">
-								{hovered ? category : category[0]}
-							</span>
+							{/* Show icon always */}
+							{categoryIcons[category]}
+
+							{/* Only show full text when hovered */}
+							{hovered && <span className="font-bold">{category}</span>}
+
 							{hovered && (
 								<ChevronRight
 									size={16}

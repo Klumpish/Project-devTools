@@ -12,4 +12,11 @@ export interface Tool {
 	isOfflineFriendly?: boolean; // Optional flag
 	notes?: string; // Optional notes from the user
 	dateAdded: string; // ISO format
+
+	howTo?: string[]; // Array of step-by-step instructions
+	syntaxExamples?: {
+		title: string;
+		code: string;
+		explanation: string;
+	}[];
 }

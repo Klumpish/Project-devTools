@@ -49,4 +49,29 @@ export const tools: Tool[] = [
 		isOfflineFriendly: true,
 		dateAdded: new Date().toISOString(),
 	},
+	{
+		id: 'nextjs',
+		name: 'Next.js',
+		description: 'React framework for building web apps',
+		url: 'https://nextjs.org',
+		category: 'UI / Design',
+		tags: ['react', 'ssr', 'framework'],
+		image: '/images/nextjs-logo.png',
+		dateAdded: '2025-06-28',
+
+		howTo: [
+			'Install Node.js and npm',
+			'Run `npx create-next-app@latest`',
+			'Choose TypeScript if needed',
+			'Run `npm run dev` to start the server',
+		],
+		syntaxExamples: [
+			{
+				title: '<Image> component',
+				code: `<Image src="/logo.png" width={100} height={100} alt="Logo" />`,
+				explanation:
+					'Next.js uses its own Image component for optimized images. You must provide width, height, and alt.',
+			},
+		],
+	},
 ];
