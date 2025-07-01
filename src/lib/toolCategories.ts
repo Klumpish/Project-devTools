@@ -13,6 +13,7 @@ export const TOOL_CATEGORIES = [
 	'Accessibility',
 	'Performance',
 	'Security',
+	'Programming',
 ];
 
 // This is your initial menu structure, defining the main categories/menus
@@ -24,6 +25,11 @@ export const initialCategoriesMenu: Record<string, string[]> = {
 	UI: [],
 	Fonts: [],
 	Performance: [],
+	'Git-Github': [],
+	Databases: [],
+	Programming: [],
+	Testing: [],
+
 	// Add any other top-level categories you want to explicitly define here
 	// e.g., 'Testing': [], 'Database': [],
 };
@@ -41,6 +47,7 @@ export function populateCategoriesFromTools(
 	baseCategories: Record<string, string[]>
 ): Record<string, string[]> {
 	// Create a deep copy to avoid mutating the original baseCategories object
+
 	const populatedCategories: Record<string, string[]> = {};
 	for (const key in baseCategories) {
 		if (Object.prototype.hasOwnProperty.call(baseCategories, key)) {

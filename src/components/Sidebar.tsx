@@ -13,6 +13,9 @@ import {
 	ShieldCheck,
 	GaugeCircle,
 	ChevronRight,
+	Database,
+	Github,
+	SquareCode,
 } from 'lucide-react';
 import {
 	populateCategoriesFromTools,
@@ -38,6 +41,9 @@ export const categoryIcons: Record<string, React.JSX.Element> = {
 	Documentation: <FileText size={20} />,
 	Security: <ShieldCheck size={20} />,
 	Performance: <GaugeCircle size={20} />,
+	'Git-Github': <Github size={20} />,
+	Databases: <Database size={20} />,
+	Programming: <SquareCode size={20} />,
 };
 
 export default function Sidebar() {
@@ -51,9 +57,9 @@ export default function Sidebar() {
 				setHovered(false);
 				setExpandedCategory(null);
 			}}
-			className={`bg-gray-900 text-white h-screen p-4 transition-all duration-300 
+			className={`bg-gray-900 text-white h-screen p-4 transition-all duration-300 h-full
         ${hovered ? 'w-64' : 'w-16'} fixed z-10`}>
-			<nav>
+			<nav className="flex flex-col justify-around h-3/5">
 				{Object.entries(categories).map(([category, tools]) => (
 					<div
 						key={category}
@@ -64,7 +70,7 @@ export default function Sidebar() {
 									prev === category ? null : category
 								)
 							}
-							className="w-full flex items-center space-x-2 size-10 hover:text-purple-400">
+							className="w-full  flex space-x-2 size-10 hover:text-purple-400 hover:bg-gray-800">
 							{/* Show icon always */}
 							{categoryIcons[category]}
 
@@ -82,9 +88,11 @@ export default function Sidebar() {
 						</button>
 
 						{hovered && expandedCategory === category && (
-							<ul className="ml-4 mt-1">
+							<ul className="ml-4 mt-1 ">
 								{tools.map((tool) => (
-									<li key={tool}>
+									<li
+										key={tool}
+										className="hover:bg-gray-800">
 										<Link
 											href={`/${category.toLowerCase()}/${tool.toLowerCase()}`}
 											className="block py-1 text-lg hover:text-purple-300">

@@ -12,4 +12,7 @@ export type ToolCategory =
 	| 'Performance'
 	| 'Security'
 	| 'Frameworks / UI'
-	| 'UI';
+	| 'UI'
+	| 'Programming'
+	| 'Git-github'
+	| 'Databases';
