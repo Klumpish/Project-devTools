@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+// import { useState } from 'react';
 import Image from 'next/image';
-import { useParams } from 'next/navigation';
+import { useParams, notFound } from 'next/navigation';
 import {
 	Accordion,
 	AccordionContent,
@@ -16,24 +16,46 @@ import { tools } from '@/data/tools';
 export default function ToolDetailPage() {
 	// para takes in category and tool
 	const params = useParams();
-	const categorySlug = params.category as string;
+	// const categorySlug = params.category as string;
 	const toolSlug = params.tool as string;
 
 	const tool = tools.find((t) => t.id.toLowerCase() === toolSlug.toLowerCase());
 
 	if (!tool) {
-		return <div className="p-4">Tool not found.</div>;
+		return notFound();
+		// return <div className="p-4">Tool not found.</div>;
 	}
+
+	{
+		/* function to construct the favicon url */
+	}
+
+	const getFaviconUrl = (websiteUrl: string, size: number = 64): string => {
+		try {
+			const urlObject = new URL(websiteUrl);
+			const domain = urlObject.hostname;
+			return `https://www.google.com/s2/favicons?domain=${domain}&sz=${size}`;
+		} catch (error) {
+			console.error('Invalid URL for favicon:', websiteUrl, error);
+			// fallback to default image or empty string if the url is invalid
+			return '/default-icon.png';
+		}
+	};
+
+	// Determine the image source: prioritize tool.image if it exists, otherwise use favicon service
+	const displayImageSrc = getFaviconUrl(tool.url, 128) || tool.image; // Use 100px for larger display
 
 	return (
 		<div className="p-4 max-w-4xl mx-auto">
-			<div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+			<div className="flex flex-col md:flex-row  md:items-start gap-6">
 				<Image
-					src={tool.image}
+					src={displayImageSrc}
 					alt={tool.name}
 					width={100}
 					height={100}
 					className="rounded-xl border shadow"
+					// Add unoptimized prop if you encounter issues with remote third-party favicons
+					// unoptimized={true}
 				/>
 
 				<div className="flex-1">
@@ -55,7 +77,17 @@ export default function ToolDetailPage() {
 					</a>
 				</div>
 			</div>
-
+			{/* info dump */}
+			{tool.details && (
+				<div className=" mt-8 mb-6 p-6 border rounded-lg shadow-md bg-card m-auto">
+					<p className="mb-4">{tool?.details?.intro}</p>
+					{tool.details?.features?.map((feature) => (
+						<li key={feature}>{feature}</li>
+					))}
+					<br />
+					{tool.details?.tips?.map((tip) => <p key={tip}>💡 {tip}</p>)}
+				</div>
+			)}
 			<div className="mt-10 space-y-4">
 				<Accordion
 					type="single"

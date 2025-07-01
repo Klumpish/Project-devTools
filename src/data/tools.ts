@@ -28,6 +28,7 @@ export const tools: Tool[] = [
 			'Go to https://heroicons.com',
 			'Pick an icon you like',
 			'Copy the SVG code or install via npm for React',
+			'npm install React',
 		],
 		syntax: [
 			{
@@ -45,7 +46,7 @@ export const tools: Tool[] = [
 			intro:
 				'Heroicons provides free MIT-licensed high-quality SVG icons for UI development.',
 			features: [
-				'Optimized for Tailwind CSS',
+				'Optimized for Tailwind CSS ',
 				'Available in solid and outline styles',
 				'React support',
 			],
@@ -102,5 +103,72 @@ export const tools: Tool[] = [
 					'Next.js uses its own Image component for optimized images. You must provide width, height, and alt.',
 			},
 		],
+	},
+	{
+		id: 'tailwindcss',
+		name: 'Tailwind CSS',
+		description:
+			'A utility-first CSS framework for rapidly building custom user interfaces.',
+		url: 'https://tailwindcss.com/',
+		category: 'Frameworks / UI', // Or 'CSS', 'Styling' depending on your ToolCategory definition
+		tags: ['css', 'framework', 'utility-first', 'design system', 'responsive'],
+		image: '/images/tools/tailwindcss-logo.png', // Assuming you'd place a logo here
+		isOfflineFriendly: true, // Once downloaded, the CLI works offline
+		dateAdded: '2025-07-01', // Current date
+
+		howTo: [
+			'Install Node.js and npm/yarn.',
+			'Create a new project (e.g., `npx create-next-app@latest`).',
+			'Install Tailwind CSS: `npm install -D tailwindcss postcss autoprefixer`.',
+			'Initialize Tailwind CSS: `npx tailwindcss init -p`. This creates `tailwind.config.js` and `postcss.config.js`.',
+			'Configure your template paths in `tailwind.config.js` to scan for Tailwind classes.',
+			'Add the Tailwind directives to your main CSS file (e.g., `globals.css`).',
+			'Start your development server (`npm run dev`) and begin using Tailwind classes in your HTML/JSX!',
+		],
+		syntax: [
+			{
+				title: 'Basic Styling',
+				code: `<div class="bg-blue-500 text-white p-4 rounded-lg shadow-md">
+  Hello, Tailwind!
+</div>`,
+				explanation:
+					'Applies a blue background, white text, padding, rounded corners, and a shadow.',
+			},
+			{
+				title: 'Responsive Design',
+				code: `<div class="w-full md:w-1/2 lg:w-1/3 p-4">
+  This div takes full width on small screens, half width on medium, and one-third on large.
+</div>`,
+				explanation:
+					'Demonstrates responsive classes for width at different breakpoints.',
+			},
+			{
+				title: 'Hover State',
+				code: `<button class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">
+  Hover Me
+</button>`,
+				explanation: 'Changes background color on hover.',
+			},
+		],
+		details: {
+			intro:
+				'Tailwind CSS is a utility-first CSS framework packed with classes like `flex`, `pt-4`, `text-center` and `rotate-90` that can be composed to build any design, directly in your markup.',
+			features: [
+				'Highly customizable via `tailwind.config.js`.',
+				'No more writing custom CSS (mostly).',
+				'Faster UI development with utility classes.',
+				'Built-in responsive design capabilities.',
+				'PurgeCSS integration to remove unused styles in production.',
+				'Excellent documentation and community support.',
+			],
+			tips: [
+				'Start with mobile-first design, applying smaller breakpoints first.',
+				'Use the Tailwind VS Code extension for autocompletion.',
+				'Explore the official documentation thoroughly for all available classes.',
+				'Consider using a component library (like `shadcn/ui`) built on Tailwind for ready-made components.',
+				'Use `@apply` sparingly in your custom CSS; prefer direct utility classes in markup when possible.',
+				"When a class doesn't exist, extend Tailwind with custom utilities or JIT mode.",
+			],
+		},
 	},
 ];

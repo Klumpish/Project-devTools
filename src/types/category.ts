@@ -10,4 +10,6 @@ export type ToolCategory =
 	| 'API Tools'
 	| 'Accessibility'
 	| 'Performance'
-	| 'Security';
+	| 'Security'
+	| 'Frameworks / UI'
+	| 'UI';

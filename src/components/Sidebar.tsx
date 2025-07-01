@@ -14,12 +14,19 @@ import {
 	GaugeCircle,
 	ChevronRight,
 } from 'lucide-react';
+import {
+	populateCategoriesFromTools,
+	initialCategoriesMenu,
+} from '@/lib/toolCategories';
+import { tools } from '@/data/tools';
 
-const categories = {
-	Color: ['Coolors', 'ColorHunt', 'TailwindShades'],
-	Icons: ['Heroicons', 'FontAwesome', 'Lucide'],
-	UI: ['TailwindUI', 'ShadCN', 'Flowbite', 'nextjs'],
-};
+const categories = populateCategoriesFromTools(tools, initialCategoriesMenu);
+
+// const xcategories = {
+// 	Color: ['Coolors', 'ColorHunt', 'TailwindShades'],
+// 	Icons: ['Heroicons', 'FontAwesome', 'Lucide'],
+// 	UI: ['Tailwindcss', 'ShadCN', 'Flowbite', 'nextjs'],
+// };
 
 export const categoryIcons: Record<string, React.JSX.Element> = {
 	Color: <Palette size={20} />,
@@ -81,7 +88,7 @@ export default function Sidebar() {
 										<Link
 											href={`/${category.toLowerCase()}/${tool.toLowerCase()}`}
 											className="block py-1 text-lg hover:text-purple-300">
-											{tool}
+											{tool.charAt(0).toUpperCase() + tool.slice(1)}
 										</Link>
 									</li>
 								))}
